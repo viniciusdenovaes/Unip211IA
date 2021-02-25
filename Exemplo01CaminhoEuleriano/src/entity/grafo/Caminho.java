@@ -1,12 +1,12 @@
-package entity;
+package entity.grafo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Caminho {
 	
-	Vertice inicial;
-	List<ParArestaVertice> caminho;
+	public Vertice inicial;
+	public List<ParArestaVertice> caminho;
 	Vertice ultimoVertice; 
 	
 	public Caminho(Vertice aInicial) {
@@ -29,6 +29,16 @@ public class Caminho {
 			if(a.equals(pav.a)) return true;
 		}
 		return false;
+	}
+	
+	@Override
+	public String toString() {
+		String res = "";
+		res += this.inicial + " ";
+		for(ParArestaVertice par: this.caminho) {
+			res += par + " ";
+		}
+		return res;
 	}
 	
 

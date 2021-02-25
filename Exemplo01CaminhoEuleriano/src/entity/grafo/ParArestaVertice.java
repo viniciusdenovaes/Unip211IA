@@ -1,4 +1,4 @@
-package entity;
+package entity.grafo;
 
 public class ParArestaVertice {
 	
@@ -7,6 +7,12 @@ public class ParArestaVertice {
 	public ParArestaVertice(Aresta aA, Vertice aV) {
 		this.a = aA;
 		this.v = aV;
+	}
+	
+	@Override
+	public String toString() {
+		String res  = " " + a.id + " " + v.id;
+		return res;
 	}
 
 }

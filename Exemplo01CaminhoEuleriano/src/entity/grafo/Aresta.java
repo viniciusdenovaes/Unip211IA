@@ -1,4 +1,4 @@
-package entity;
+package entity.grafo;
 
 public class Aresta implements Comparable<Aresta>{
 	
@@ -41,6 +41,13 @@ public class Aresta implements Comparable<Aresta>{
 	@Override
 	public int compareTo(Aresta o) {
 		return this.id.compareTo(o.id);
+	}
+	
+	@Override
+	public String toString() {
+		String res = "";
+		res += this.id + ": " + this.v1 + "---" + this.v2;
+		return res;
 	}
 	
 	

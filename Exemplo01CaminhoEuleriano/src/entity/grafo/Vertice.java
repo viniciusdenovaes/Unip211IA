@@ -1,4 +1,4 @@
-package entity;
+package entity.grafo;
 
 public class Vertice implements Comparable<Vertice>{
 	
@@ -30,6 +30,11 @@ public class Vertice implements Comparable<Vertice>{
 		return this.id.compareTo(o.id);
 	}
 	
+	
+	@Override
+	public String toString() {
+		return this.id;
+	}
 	
 	
 	
