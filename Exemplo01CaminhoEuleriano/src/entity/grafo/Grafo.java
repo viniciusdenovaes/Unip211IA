@@ -1,6 +1,7 @@
 package entity.grafo;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -45,6 +46,22 @@ public class Grafo {
 	
 	public Aresta getAresta(String nome) {
 		return this.A.get(nome);
+	}
+	
+	public Collection<Vertice> getTodosVertices(){
+		return this.V.values();
+	}
+	
+	public Collection<Aresta> getTodosArestas(){
+		return this.A.values();
+	} 
+	
+	public Map<Vertice, List<Aresta>> getListaAdjacencia(){
+		return this.listaDeAdjacencia;
+	}
+	
+	public List<Aresta> getArestasAdjacentes(Vertice v){
+		return this.listaDeAdjacencia.get(v);
 	}
 	
 	@Override
