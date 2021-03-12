@@ -1,6 +1,8 @@
 package entity;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import entity.estruturas.EstadoAbertos;
 import entity.estruturas.Fila;
@@ -17,19 +19,22 @@ public class EspacoDeEstados {
 					 ));
 	 
 	 Estado inicial;
-	 EstadoAbertos ea;
+	 EstadoAbertos estadosAbertos;
+	 Set<Estado> estadosFechados;
+	 
 	 
 	 public EspacoDeEstados(Estado aInicial, EstadoAbertos aEstruturaAbertos) {
 		 this.inicial = aInicial;
-		 this.ea = aEstruturaAbertos;
-		 ea.push(this.inicial);
+		 this.estadosAbertos = aEstruturaAbertos;
+		 estadosAbertos.push(this.inicial);
+		 estadosFechados = new HashSet<>();
 		 
 	}
 	 
 	 public Estado solve() {
 		 
-		 while(ea.size()>0) {
-			 Estado e = ea.pop();
+		 while(estadosAbertos.size()>0) {
+			 Estado e = estadosAbertos.pop();
 			 System.out.println("TESTANDO ESTADO");
 			 System.out.println(e);
 			 if(e.isObjetivo()) {
@@ -37,9 +42,11 @@ public class EspacoDeEstados {
 				 System.out.println(e);
 				 return e;
 			 }
+			 estadosFechados.add(e);
 			 Collection<Estado> filhos = e.geraFilhos();
 			 for(Estado filho: filhos) {
-				 ea.push(filho);
+				 if(!estadosFechados.contains(filho))
+					 estadosAbertos.push(filho);
 			 }
 		 }
 		 
