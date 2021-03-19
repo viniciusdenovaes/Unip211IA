@@ -1,0 +1,29 @@
+package teste;
+
+import dao.InputInstance;
+import entity.Estado;
+import entity.Tabuleiro;
+import entity.estruturas.Fila;
+import entity.estruturas.FilaDePrioridade;
+import solver.EspacoDeEstados;
+import solver.heuristica_avaliacao.HeuristicaAvaliacaoInteligente;
+import solver.heuristica_avaliacao.HeuristicaAvaliacaoPecasForaLugar;
+
+public class TesteEspacoEstadoHeuristicaAvaliacaoInteligente {
+	public static void main(String[] args) {
+		
+		Tabuleiro t = InputInstance.getInstance("files/inst02.in");
+		Estado e = new Estado(t);
+		System.out.println("Começando com o estado ");
+		System.out.println(e);
+		
+		EspacoDeEstados ee = new EspacoDeEstados(e, 
+				new FilaDePrioridade(
+						new HeuristicaAvaliacaoInteligente(
+								new HeuristicaAvaliacaoPecasForaLugar())));
+		Estado solucao = ee.solve();
+		System.out.println("SOLUCAO: " + solucao);
+		
+	}
+
+}
