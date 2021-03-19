@@ -6,10 +6,10 @@ import entity.Tabuleiro;
 import entity.estruturas.Fila;
 import entity.estruturas.FilaDePrioridade;
 import solver.EspacoDeEstados;
-import solver.heuristica_avaliacao.HeuristicaAvaliacaoInteligente;
+import solver.heuristica_avaliacao.HeuristicaAvaliacaoF;
 import solver.heuristica_avaliacao.HeuristicaAvaliacaoPecasForaLugar;
 
-public class TesteEspacoEstadoHeuristicaAvaliacaoInteligente {
+public class TesteEspacoEstadoHeuristicaAvaliacaoF {
 	public static void main(String[] args) {
 		
 		Tabuleiro t = InputInstance.getInstance("files/inst02.in");
@@ -19,7 +19,7 @@ public class TesteEspacoEstadoHeuristicaAvaliacaoInteligente {
 		
 		EspacoDeEstados ee = new EspacoDeEstados(e, 
 				new FilaDePrioridade(
-						new HeuristicaAvaliacaoInteligente(
+						new HeuristicaAvaliacaoF(
 								new HeuristicaAvaliacaoPecasForaLugar())));
 		Estado solucao = ee.solve();
 		System.out.println("SOLUCAO: " + solucao);

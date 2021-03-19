@@ -2,11 +2,11 @@ package solver.heuristica_avaliacao;
 
 import entity.Estado;
 
-public class HeuristicaAvaliacaoInteligente implements HeuristicaAvaliacao {
+public class HeuristicaAvaliacaoF implements HeuristicaAvaliacao {
 	
 	HeuristicaAvaliacao heuristicaAvaliacao;
 
-	public HeuristicaAvaliacaoInteligente(HeuristicaAvaliacao aHeuristicaAvaliacao) {
+	public HeuristicaAvaliacaoF(HeuristicaAvaliacao aHeuristicaAvaliacao) {
 		this.heuristicaAvaliacao = aHeuristicaAvaliacao;
 	}
 
