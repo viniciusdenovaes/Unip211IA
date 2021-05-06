@@ -28,17 +28,17 @@ public class Grafo {
 		listaDeAdjacencia.get(a.v2).add(a.v1);
 	}
 	
-	private void addVertice(Vertice v) {
+	public void addVertice(Vertice v) {
 		V.put(v.id, v);
 		if(!listaDeAdjacencia.containsKey(v)) {
 			listaDeAdjacencia.put(v, new ArrayList<>());
 		}
 	}
 	
-	public void addAresta(String nomeV1, String nomeV2, double peso) {
-		Aresta a = new Aresta(new Vertice(nomeV1), new Vertice(nomeV2), peso);
-		this.addAresta(a);
-	}
+//	public void addAresta(String nomeV1, String nomeV2, double peso) {
+//		Aresta a = new Aresta(new Vertice(nomeV1), new Vertice(nomeV2), peso);
+//		this.addAresta(a);
+//	}
 	
 	public Vertice getVertice(String nome) {
 		return this.V.get(nome);
@@ -77,6 +77,22 @@ public class Grafo {
 		
 	}
 	
+	public double getDistanciaEuclidiana(Vertice v1, Vertice v2) {
+		double x1 = v1.coordenada.x;
+		double y1 = v1.coordenada.y;
+		double x2 = v2.coordenada.x;
+		double y2 = v2.coordenada.y;
+		
+		return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+		
+	}
+	
+	public double getDistanciaEuclidiana(String nomeV1, String nomeV2) {
+		Vertice v1 = this.getVertice(nomeV1);
+		Vertice v2 = this.getVertice(nomeV2);
+		return getDistanciaEuclidiana(v1, v2);
+	}
+	
 	@Override
 	public String toString() {
 		String res = "";
@@ -84,8 +100,18 @@ public class Grafo {
 		for(Vertice v: this.V.values()) {
 			res += v + ", adjs: " + listaAdajacenciaToSring(v) + "\n";
 		}
+		System.out.println("\nDistancias do mapa (Instancia): \n");
 		for(Aresta a: this.A.values()) {
 			res += a + "\n";
+		}
+		
+		System.out.println("\n\nDistancias euclidianas: \n");
+		for(Vertice v1: this.V.values()) {
+			for(Vertice v2: this.V.values()) {
+				if(v1.compareTo(v2)<=0) {
+					res += v1.id + "-" + v2.id + ": " + getDistanciaEuclidiana(v1, v2) + "\n";
+				}
+			}
 		}
 		
 		return res;

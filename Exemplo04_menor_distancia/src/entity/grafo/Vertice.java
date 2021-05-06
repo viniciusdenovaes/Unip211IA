@@ -3,9 +3,11 @@ package entity.grafo;
 public class Vertice implements Comparable<Vertice>{
 	
 	String id;
+	Coordenada coordenada;
 	
-	public Vertice(String id) {
+	public Vertice(String id, Coordenada coordenada) {
 		this.id = id;
+		this.coordenada = coordenada;
 	}
 	
 	
@@ -47,7 +49,7 @@ public class Vertice implements Comparable<Vertice>{
 	
 	@Override
 	public String toString() {
-		return this.id;
+		return "" + this.id + this.coordenada;
 	}
 	
 	

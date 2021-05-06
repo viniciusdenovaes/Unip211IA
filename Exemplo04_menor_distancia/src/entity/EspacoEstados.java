@@ -35,6 +35,7 @@ public class EspacoEstados {
 			 }
 			 Collection<Estado> filhos = e.geraFilhos();
 			 for(Estado filho: filhos) {
+				 // System.out.println("Filho gerado: " + filho);
 				 ea.push(filho);
 			 }
 		 }
